@@ -1,0 +1,100 @@
+//IE 设置
+%ie-set{
+    scrollbar-arrow-color: transparent;
+    scrollbar-face-color: transparent;
+    scrollbar-3dlight-color: transparent;
+    scrollbar-highlight-color: transparent;
+    scrollbar-shadow-color: transparent;
+    scrollbar-darkshadow-color: transparent;
+    scrollbar-track-color: transparent;
+    scrollbar-base-color: transparent;
+}
+
+//IE hovre 设置
+%ie-hover-set{
+    scrollbar-arrow-color: #eee;
+    scrollbar-face-color: #eee;
+    scrollbar-3dlight-color: #eee;
+    scrollbar-highlight-color: #eee;
+    scrollbar-shadow-color: #eee;
+    scrollbar-darkshadow-color: #eee;
+    scrollbar-track-color: #eee;
+    scrollbar-base-color: #eee;
+}
+
+//webkit 设置
+%webkit-set{
+    &::-webkit-scrollbar-thumb{
+        border-radius: 3px;
+        box-shadow: inset 0 0 5px transparent;
+        background: transparent;
+    }
+    &::-webkit-scrollbar-track{
+        box-shadow: inset 0 0 5px transparent;
+        border-radius: 3px;
+        background: transparent;
+    }
+}
+
+//webkit hovre 设置
+%webkit-hover-set{
+    &::-webkit-scrollbar-thumb{
+        background: rgba(140,140,140,.2);
+    }
+    &::-webkit-scrollbar-track{
+        background: transparent;
+    }
+}
+
+%relative {
+    position: relative;
+}
+
+@mixin scroll_base($wide:3px){
+    @extend %relative;
+
+    //IE 设置
+    @extend %ie-set;
+
+    //webkit 设置
+    &::-webkit-scrollbar{
+        width: $wide;
+        height: $wide;
+    }
+    @extend %webkit-set;
+
+    &:hover, &:focus{
+
+        //IE hovre 设置
+        @extend %ie-hover-set;
+
+        //webkit hovre 设置
+        @extend %webkit-hover-set;
+    }
+}
+
+//纵向滚动条
+.auto-scroll, .over-scroll {
+    overflow-y: auto;
+    @include scroll_base();
+}
+.wide-auto-scroll { //（易于拖动）
+    overflow-y: auto;
+    @include scroll_base(14px);
+}
+ 
+//横向滚动条（易于拖动）
+.auto-h-scroll{                           
+    overflow-x: auto;
+    @include scroll_base(14px);
+}
+
+//溢出隐藏
+.no-scroll, .over-hide{
+    overflow: hidden;
+}
+
+//溢出显示
+.over-show{
+    overflow: visible;
+}
