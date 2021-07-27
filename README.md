@@ -1,6 +1,3 @@
-# btx_ui
-
-> btx ui for web project
 
 ## Build Setup
 
