@@ -9,6 +9,7 @@ yarn-error.log*
 .vscode
 btx_ui
 dist
+static
 *.suo
 *.ntvs*
 *.njsproj
